@@ -52,7 +52,7 @@ Base URL: http://localhost:8000
 
 JSON 필수 필드 (JSON 요청을 위함)
 
-user_query (String): 챗봇에게 전달할 사용자 질문 메시지
+ - user_query (String): 챗봇에게 전달할 사용자 질문 메시지
 
 JSON 요청 예시
 
@@ -64,11 +64,11 @@ JSON 요청 예시
 
 JSON 반환 필드
 
-status (String): 성공 여부 ("success")
+ - status (String): 성공 여부 ("success")
 
-answer (String): 사용자에게 보여줄 챗봇의 최종 답변 텍스트
+ - answer (String): 사용자에게 보여줄 챗봇의 최종 답변 텍스트
 
-data (Object): Watsonx 오케스트레이트 원본 데이터
+ - data (Object): Watsonx 오케스트레이트 원본 데이터
 
 JSON 응답 예시
 
@@ -91,13 +91,13 @@ JSON 응답 예시
 
 통신 중 에러 발생 시 HTTP 상태 코드와 함께 아래와 같은 상세 메시지가 반환됩니다.
 
-401 Unauthorized: 인증 오류 -> IBM API Key 설정 확인 필요.
+- 401 Unauthorized: 인증 오류 -> IBM API Key 설정 확인 필요.
 
-503 Service Unavailable: 연결 오류(IBM Cloud 서버 접속 불가) -> 네트워크 확인 필요.
+- 503 Service Unavailable: 연결 오류(IBM Cloud 서버 접속 불가) -> 네트워크 확인 필요.
 
-504 Gateway Timeout: 시간 초과(Watsonx 오케스트레이트 응답 지연 (설정 시간: 20초)) -> 잠시 후 재시도 권장.
+- 504 Gateway Timeout: 시간 초과(Watsonx 오케스트레이트 응답 지연 (설정 시간: 20초)) -> 잠시 후 재시도 권장.
 
-500 Internal Server Error: Unexpected Error(백엔드 내부 로직 오류 발생)
+- 500 Internal Server Error: Unexpected Error(백엔드 내부 로직 오류 발생)
 
 
 
