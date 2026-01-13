@@ -9,7 +9,6 @@
 프로젝트 구동을 위해서는 파이썬(Python) 환경에서 아래 의존성 패키지를 설치해야 합니다.
 
 ```bash
-# 터미널에서 아래 명령어를 실행하여 설치 (버전 고정)
 pip install fastapi==0.115.6 uvicorn==0.34.0 httpx==0.28.1 python-dotenv==1.0.1
 ```
 
