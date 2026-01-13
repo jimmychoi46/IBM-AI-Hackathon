@@ -104,7 +104,7 @@ Base URL: http://localhost:8000
 - 503 Service Unavailable: 연결 오류(IBM Cloud 서버 접속 불가) -> 네트워크 확인 필요.
 
 - 504 Gateway Timeout: 시간 초과(Watsonx 오케스트레이트 응답 지연 (설정 시간:총 60초[접속 10초 + 데이터 전송 50초]))
-- 
+ 
   -> 잠시 후 재시도 권장.
 
 - 500 Internal Server Error: Unexpected Error(백엔드 내부 로직 오류 발생)
