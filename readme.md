@@ -58,11 +58,11 @@ Base URL: http://localhost:8000
 
    - user_query (String): 챗봇에게 전달할 사용자 질문 메시지
 
-2) JSON 요청 예시
+2) JSON 요청 예시 (JSON 응답과의 통일성 유지를 위해 마찬가지로 OpenTripPlanner Agent의 instruction에서 발췌 후 일부 수정) 
 
 ```json
    {
-     "user_query": "서울 시청 위치와 근처 맛집 알려줘"
+     "user_query": "현재 위치에서 태릉입구역 3번 출구까지 가는 방법 알려줘"
    }
 ```
 ### Response Body (JSON)
@@ -75,24 +75,27 @@ Base URL: http://localhost:8000
 
    - data (Object): Watsonx 오케스트레이트 원본 데이터
 
-2) JSON 응답 예시
+2) JSON 응답 예시 (OpenTripPlanner Agent의 instruction에서 발췌 후 일부 수정)
 
 
 ```json
-   {
-     "status": "success",
-     "answer": "서울 시청은 중구에 위치해 있으며...",
-     "data": {
-       "results": [
-         {
-           "data": {
-             "output": "서울 시청은 중구에 위치해 있으며...",
-             "skill_result": { "lat": 37.5665, "lng": 126.9780 }
-           }
-         }
-       ]
-     }
-   }
+{
+    "status": "success",
+    "answer": "태릉입구역 3번 출구까지 총 19.6km, 약 51분 소요되는 경로를 찾았습니다.",
+    "data": {
+        "trip": {
+            "tripPatterns": [
+                {
+                    "aimedStartTime": "2026-01-11T17:34:28+09:00",
+                    "distance": 19626.6,
+                    "legs": [
+                        { "mode": "foot", "toPlace": { "name": "태릉입구역3번출구" } }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 ## 5.상세 예외 처리 가이드
