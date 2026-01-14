@@ -132,21 +132,41 @@ POST 응답을 통해 반환된된 run_id를 사용하여 에이전트의 작업
 
    3) 응답의 status가 "completed"가 될 때까지 로딩 화면 유지
 
-### 2. Dart 데이터 모델
+### 2. Dart 데이터 모델 (GET /api/chat/status/{run_id}을 통해 반환된 응답을 바탕으로 작성함)
 
 ```dart
 class AgentResponse {
   final String status;
   final String answer;
-  final List<dynamic> itineraries;
+  final List<Itinerary> itineraries;
 
   AgentResponse({required this.status, required this.answer, required this.itineraries});
 
-  factory AgentResponse.fromJson(Map<String, dynamic> json) => AgentResponse(
-    status: json['status'] ?? '',
-    answer: json['answer'] ?? '',
-    itineraries: json['itineraries'] ?? [],
-  );
+  factory AgentResponse.fromJson(Map<String, dynamic> json) {
+    return AgentResponse(
+      status: json['status'] ?? '',
+      answer: json['answer'] ?? '',
+      itineraries: (json['itineraries'] as List)
+          .map((i) => Itinerary.fromJson(i))
+          .toList(),
+    );
+  }
+}
+
+class Itinerary {
+  final int duration;
+  final double distance;
+  final List<dynamic> legs;
+
+  Itinerary({required this.duration, required this.distance, required this.legs});
+
+  factory Itinerary.fromJson(Map<String, dynamic> json) {
+    return Itinerary(
+      duration: json['duration'] ?? 0,
+      distance: (json['distance'] ?? 0).toDouble(),
+      legs: json['legs'] ?? [],
+    );
+  }
 }
 ```
 
